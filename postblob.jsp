@@ -1,21 +1,15 @@
 <%@page language="java"import="java.util.*,java.sql.*"pageEncoding="utf-8"%>
-
 <%
-
 String path = request.getContextPath();
-
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-
 %>
 <%@ page import="java.sql.*" %>
-
 <%@ page import="java.util.*"%>
-
 <%@ page import="java.io.*"%>
 <!DOCTYPEHTMLPUBLIC"-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<basehref="<%=basePath%>">
+<base href="<%=basePath%>">
 <title>My JSP 'readblob.jsp' starting page</title>
 <meta http-equiv="pragma"content="no-cache">
 <meta http-equiv="cache-control"content="no-cache">
@@ -29,15 +23,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <%
 String username=request.getParameter("username");
-String passwd=request.getParameter("password");
+String password=request.getParameter("password");
 String roleID=request.getParameter("roleID");
 String className="com.mysql.jdbc.Driver";
 String url="jdbc:mysql://localhost:3306/news";
 String user="root";
-String password="123"; 
+String passwd="123"; 
 Class.forName(className);
-Connection conn=DriverManager.getConnection(url, user, password);
-String sql="INSERT INTO users(username,password,roleID) VALUES('"+username+"','"+passwd+"',"+roleID+")";
+Connection conn=DriverManager.getConnection(url, user, passwd);
+String sql="INSERT INTO users(username,passwd,roleID) VALUES('"+username+"','"+passwd+"',"+roleID+")";
 Statement stmt=conn.createStatement();
 int count = stmt.executeUpdate(sql); 
 if(count>0)
